@@ -20,6 +20,7 @@ It also requires:
 
 
 ## TODOs
+- extract out hard coded values into a configuration file
 - Add more doc on how to configure, setup and run, including the required mqtt server
 - Generate page.html from a template so that URL from which to get pictures and be configured in config.txt
 - Modify to be able to connect to mqtt server using ssl

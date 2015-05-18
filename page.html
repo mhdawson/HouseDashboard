@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+   <head>
+      <title>House Data</title>
+   </head>
+
+   <body style="overflow-x:hidden;overflow-y:hidden;">
+      <script>
+      var reconnectTimeout = 1000 * 5;
+      var connect = function() {
+         console.log('connecting');
+         var wsConnection = new WebSocket('ws://' + window.location.host,'text');
+         wsConnection.onmessage = function(event) {
+            var parts = event.data.split(":");
+            var topic = parts[0];
+            var value = parts[1];
+            var targetTD = document.getElementById(topic);
+            if (null != targetTD) {
+               targetTD.innerHTML=value;
+            }            
+         }
+         
+         wsConnection.onerror = function() {
+            console.log('websocket connection error');
+            setTimeout(connect, reconnectTimeout);
+         };
+
+         wsConnection.onclose = function() {
+            console.log('websocket connection close');
+            setTimeout(connect, reconnectTimeout);
+         };
+
+      }
+
+      function openwindow() {
+          var url = 'http://' + window.location.host + '/?windowopen=y';
+	  var theWindow=window.open(url, "HouseDataLive", "Height=200px,Width=305px,toolbar=0,location=0,menubar=0");
+          theWindow.focus();
+      }
+
+      var isChild = window.location.href.indexOf("?");
+      if (isChild > 0) {
+         connect();
+      } else {
+         openwindow();
+      }
+
+      </script>
+      <table BORDER="10" width="100%" style="font-size:25px">
+         <tbody>
+            <td>Outside temp:</td> <td id="house/nexxtech/temp">pending</td></tr>
+            <tr><td>Office temp: </td> <td id="house/temp1">pending</td></tr>
+            <tr><td>Ground floor:</td> <td id="house/lacrossTX141/9b/temp">pending</td></tr>
+            <tr><td>Furnace room:</td> <td id="house/blueline/temp">pending</td></tr>
+            <tr><td>Power:       </td> <td id="house/blueline/power">pending</td></tr>
+         </tbody>
+      </table>
+    </body>
+</html>
