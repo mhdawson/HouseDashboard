@@ -1,7 +1,8 @@
 # MQTT/Node base home dashsboard
 
-This projects provides a home dashboard showing temperator, power
-usage and other data collected from local sensors.
+This projects provides a home dashboard showing temperature, power
+usage and other data collected from local sensors. The dashboard is updated
+in realtime over a  websockets connection. 
 
 ![picture of dashboard main window](pictures/dashboard_main_window.jpg?raw=true)
 
