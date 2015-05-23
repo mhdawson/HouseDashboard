@@ -1,0 +1,4 @@
+title=House Data
+mqttServerUrl=<Add your URL here>
+certsDir=./certs
+dashboardEntries=Outside temp:house/nexxtech/tmp,Office temp:house/temp1,Ground floor:house/lacrossTX141/9b/temp,Furnace room:house/blueline/temp,Power:house/blueline/power
