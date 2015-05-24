@@ -57,6 +57,7 @@ readConfig(process.argv[2]);
 // setup the websocket/server enpoint
 var mainPage = fs.readFileSync('page.html').toString();
 mainPage = mainPage.replace('<DASHBOARD TITLE>', title);
+mainPage = mainPage.replace('<UNIQUE_WINDOW_ID>', title);
 mainPage = mainPage.replace('<DASHBOARD_ENTRIES>', dashBoardEntriesHTML);
 var server = http.createServer(function(request,response) {
    response.writeHead(200, {'Content-Type': 'text/html'});
